@@ -1,14 +1,14 @@
-module github.com/grafana/xk6-amqp
+module github.com/prmuthu/xk6-amqp
 
-go 1.21
+go 1.19
 
 require (
-	github.com/rabbitmq/amqp091-go v1.5.0
-	github.com/vmihailenco/msgpack/v5 v5.3.5
+	github.com/Azure/go-amqp v1.4.0
 	go.k6.io/k6 v0.49.0
 )
 
 require (
+	github.com/Azure/go-amqp v1.4.0 // indirect
 	github.com/dlclark/regexp2 v1.9.0 // indirect
 	github.com/dop251/goja v0.0.0-20230531210528-d7324b2d74f7 // indirect
 	github.com/fatih/color v1.15.0 // indirect
