@@ -1,7 +1,6 @@
 module github.com/prmuthu/xk6-amqp
 
 go 1.19
-
 require (
 	github.com/Azure/go-amqp v1.4.0
 	go.k6.io/k6 v0.49.0
