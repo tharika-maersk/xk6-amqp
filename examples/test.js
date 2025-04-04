@@ -1,45 +1,25 @@
 import Amqp from 'k6/x/amqp';
-import Queue from 'k6/x/amqp/queue';
 
+const url = "amqps://localhost:443";
+const session = Amqp.start({
+  connection_url: url,
+  username: username,
+  password: password,
+})
 export default function () {
-  console.log("K6 amqp extension enabled, version: " + Amqp.version)
-  const url = "amqp://guest:guest@localhost:5672/"
-  Amqp.start({
-    connection_url: url
-  })
-  console.log("Connection opened: " + url)
   
-  const queueName = 'K6 general'
+  const queueName = 'TEST.QUEUE.1::TEST.QUEUE.1';
   
-  Queue.declare({
-    name: queueName,
-    // durable: false,
-    // delete_when_unused: false,
-    // exclusive: false,
-    // no_wait: false,
-    // args: null
-  })
-
-  console.log(queueName + " queue is ready")
-
   Amqp.publish({
+    session: session,
     queue_name: queueName,
-    body: "Ping from k6",
-    content_type: "text/plain"
-    // exchange: '',
-    // mandatory: false,
-    // immediate: false,
+    body: "Ping from k6 script567"
   })
 
-  const listener = function(data) { console.log('received data: ' + data) }
-  Amqp.listen({
+  let message = Amqp.listen({
+    session: session,
     queue_name: queueName,
-    listener: listener,
     auto_ack: true,
-    // consumer: '',
-    // exclusive: false,
-		// no_local: false,
-		// no_wait: false,
-    // args: null
   })
+  console.log("Message received: " + message);
 }

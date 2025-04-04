@@ -1,11 +1,11 @@
 module github.com/grafana/xk6-amqp
 
-go 1.19
+go 1.21
 
 require (
 	github.com/rabbitmq/amqp091-go v1.5.0
 	github.com/vmihailenco/msgpack/v5 v5.3.5
-	go.k6.io/k6 v0.45.1
+	go.k6.io/k6 v0.49.0
 )
 
 require (
