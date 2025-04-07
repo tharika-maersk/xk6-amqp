@@ -1,4 +1,4 @@
-module github.com/prmuthu/xk6-amqp
+module github.com/tharika-maersk/xk6-amqp
 
 go 1.19
 
